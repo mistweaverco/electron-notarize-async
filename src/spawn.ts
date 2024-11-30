@@ -7,7 +7,6 @@ const d = debug('electron-notarize:spawn');
 export interface SpawnResult {
   code: number | null;
   output: string;
-  message?: string;
 }
 
 export const spawn = (

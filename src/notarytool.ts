@@ -119,7 +119,7 @@ export async function notarizeAndWaitForNotaryTool(opts: NotaryToolStartOptions)
       logOutput = await getNotarizationLogs(opts, parsed.id);
     }
 
-    if (!opts.wait && result.message === 'Successfully uploaded file') {
+    if (!opts.wait && parsed.message === 'Successfully uploaded file') {
       d(`notarization queued (id: ${parsed.id})`);
       return;
     }
