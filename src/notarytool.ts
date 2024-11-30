@@ -96,14 +96,11 @@ export async function notarizeAndWaitForNotaryTool(opts: NotaryToolStartOptions)
       d('zip succeeded, attempting to upload to Apple');
     }
 
-    const notarizeArgs = [
-      'submit',
-      filePath,
-      ...authorizationArgs(opts),
-      '--wait',
-      '--output-format',
-      'json',
-    ];
+    const notarizeArgs = ['submit', filePath, ...authorizationArgs(opts)];
+
+    if (opts.wait) notarizeArgs.push('--wait');
+    if (opts.webhook) notarizeArgs.push('--webhook', opts.webhook);
+    notarizeArgs.push('--output-format', 'json');
 
     const result = await runNotaryTool(notarizeArgs, opts.notarytoolPath);
     const rawOut = result.output.trim();

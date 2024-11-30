@@ -3,13 +3,12 @@ Electron Notarize
 
 > Notarize your Electron apps seamlessly for macOS
 
-[![CircleCI status](https://circleci.com/gh/electron/notarize.svg?style=shield)](https://circleci.com/gh/electron/notarize)
-[![NPM package](https://img.shields.io/npm/v/@electron/notarize)](https://npm.im/@electron/notarize)
+[![NPM package](https://img.shields.io/npm/v/@mistweaverco/electron-notarize-async)](https://npm.im/@mistweaverco/electron-notarize-async)
 
 ## Installation
 
 ```bash
-npm install @electron/notarize --save-dev
+npm install @mistweaverco/electron-notarize-async --save-dev --save-exact
 ```
 
 ## What is app "notarization"?
@@ -63,13 +62,15 @@ This method also requires you to specify the [Team ID](https://developer.apple.c
 of the Developer Team you want to notarize under. An Apple ID may be part of multiple Teams.
 
 ```javascript
-import { notarize } from '@electron/notarize';
+import { notarize } from '@mistweaverco/electron-notarize-async';
 
 await notarize({
   appPath,
   appleId, // Login name of your Apple Developer account
   appleIdPassword, // App-specific password
   teamId, // Team ID for your developer team
+  wait: undefined, // Whether to wait for the notarization process to complete, defaults to not waiting. set to `true` to wait
+  webhook: undefined, // URL to call back when notarization is complete, defaults to not setting a webhook
 });
 ```
 
@@ -91,12 +92,14 @@ For security purposes, the private key can only be downloaded once.
 Provide the absolute path to your API key as the `appleApiKey` argument.
 
 ```javascript
-import { notarize } from '@electron/notarize';
+import { notarize } from '@mistweaverco/electron-notarize-async';
 
 await notarize({
   appPath,
   appleApiKey, // Absolute path to API key (e.g. `/path/to/AuthKey_X0X0X0X0X0.p8`)
   appleApiIssuer, // Issuer ID (e.g. `d5631714-a680-4b4b-8156-b4ed624c0845`)
+  wait: undefined, // Whether to wait for the notarization process to complete, defaults to not waiting. set to `true` to wait
+  webhook: undefined, // URL to call back when notarization is complete, defaults to not setting a webhook
 });
 ```
 
@@ -142,11 +145,13 @@ After successfully storing your credentials, pass the keychain profile name into
 the `keychainProfile` parameter.
 
 ```javascript
-import { notarize } from '@electron/notarize';
+import { notarize } from '@mistweaverco/electron-notarize-async';
 
 await notarize({
   appPath,
   keychainProfile,
+  wait: undefined, // Whether to wait for the notarization process to complete, defaults to not waiting. set to `true` to wait
+  webhook: undefined, // URL to call back when notarization is complete, defaults to not setting a webhook
 });
 ```
 

@@ -1,23 +1,23 @@
 {
-  "name": "@electron/notarize",
-  "version": "0.0.0-development",
+  "name": "@mistweaverco/electron-notarize-async",
+  "version": "0.0.1",
   "description": "Notarize your Electron app",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "author": "Samuel Attard",
   "license": "MIT",
-  "homepage": "https://github.com/electron/notarize#readme",
+  "homepage": "https://github.com/mistweaverco/electron-notarize-async#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/electron/notarize.git"
+    "url": "git+https://github.com/mistweaverco/electron-notarize-async.git"
   },
   "bugs": {
-    "url": "https://github.com/electron/notarize/issues"
+    "url": "https://github.com/mistweaverco/electron-notarize-async/issues"
   },
   "scripts": {
     "build": "tsc",
     "lint": "prettier --check \"src/**/*.ts\"",
-    "prepare": "yarn build",
+    "lint:fix": "prettier --write \"src/**/*.ts\"",
     "test": "jest"
   },
   "files": [
