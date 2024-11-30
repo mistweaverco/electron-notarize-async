@@ -55,9 +55,11 @@ async function notarize({ appPath, ...otherOptions }: NotarizeOptions) {
     ...otherOptions,
   } as NotaryToolStartOptions);
 
-  await retry(() => stapleApp({ appPath }), {
-    retries: 3,
-  });
+  if (otherOptions.wait) {
+    await retry(() => stapleApp({ appPath }), {
+      retries: 3,
+    });
+  }
 }
 
 export { notarize };
